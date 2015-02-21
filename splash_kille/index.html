@@ -7,13 +7,21 @@
 
 <body>
 <script type="text/javascript">
+    var add_event = function(obj,type,fn) {
+        if (obj.addEventListener) {
+            obj.addEventListener(type, fn, false);
+        } else if (obj.attachEvent) {
+            obj.attachEvent('on'+type, fn);
+        }
+                                                                                    
+    };
+
     $(document).ready(function(){
-        console.log('dddd1');
-        $(window).on('beforeunload', function(){
-            console.log('AAAAAAAAAAAAAAAAAAAAAAAA');
-            var a = Image()
-            a.src = "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTndyNm4BMDbzLOcBy_NzyqaTNOdGWwdx0glE3AfJNacSQ0UWbjCA";
-            return "Cycki"
+        add_event(window, 'unload', function(){
+            console.log('UNLOAD');
+            var a = new Image();
+            a.src = "https://d2m2lkhawsaq1u.cloudfront.net/uploads/trial/sasha-grey-1-588_1399760242.jpg";
+            return "A"
         });
     });
 
