@@ -23,7 +23,7 @@ function getCookie(cname) {
     return "";
 };
 
-String.prototype.hashCode = function(){
+hashCode = function(){
 	var hash = 0;
 	if (this.length == 0) return hash;
 	for (i = 0; i < this.length; i++) {
@@ -38,7 +38,7 @@ String.prototype.hashCode = function(){
 function gotit(){
     
     var token = Date.now() - getCookie("started");
-    alert(token + "-"+ token.hashCode());
+    alert(token + "-"+ hashCode(String(token.hashCode())));
 }
 
 
