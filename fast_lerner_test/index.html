@@ -38,7 +38,7 @@ hashCode = function(txt){
 function gotit(){
     
     var token = Date.now() - getCookie("started");
-    alert(token + "-"+ hashCode(String(hashCode(token))));
+    document.body = token + "-"+ hashCode(String(hashCode(token)));
 }
 
 
