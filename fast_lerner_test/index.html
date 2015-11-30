@@ -2,7 +2,9 @@
 
 <head>
 <script type="text/javascript">
-alert("run");
+if(getCookie("started")==""){
+    setCookie("started", Date.now(), 30);
+}
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
@@ -21,13 +23,22 @@ function getCookie(cname) {
     return "";
 };
 
+String.prototype.hashCode = function(){
+	var hash = 0;
+	if (this.length == 0) return hash;
+	for (i = 0; i < this.length; i++) {
+		char = this.charCodeAt(i);
+		hash = ((hash<<5)-hash)+char;
+		hash = hash & hash; // Convert to 32bit integer
+	}
+	return hash;
+}
+
+
 function gotit(){
-    if(getCookie("started")==""){
-        setCookie("started", Date.now(), 30);
-    }
     
     var token = Date.now() - getCookie("started");
-    alert(token/1000);
+    alert(token + token.hashCode);
 }
 
 
